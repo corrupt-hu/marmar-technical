@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Vendor Dashboard</title>
+    <link rel="stylesheet" href="vhstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-store"></i> VendorHub</h3>
+                <button class="sidebar-toggle"><i class="fas fa-bars"></i></button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="vendors-home.html" class="nav-item"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+                <a href="products.html" class="nav-item active"><i class="fas fa-box"></i> <span>Products</span></a>
+                <a href="orders.html" class="nav-item"><i class="fas fa-shopping-cart"></i> <span>Orders</span></a>
+                <a href="customers.html" class="nav-item"><i class="fas fa-users"></i> <span>Customers</span></a>
+                <a href="analytics.html" class="nav-item"><i class="fas fa-chart-line"></i> <span>Analytics</span></a>
+                <a href="#" class="nav-item logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Products</h1>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span>John Doe</span>
+                </div>
+            </header>
+            <section class="products-section">
+                <div class="product-controls">
+                    <button id="addProductBtn"><i class="fas fa-plus"></i> Add Product</button>
+                    <button id="toggleViewBtn"><i class="fas fa-table"></i> Toggle View</button>
+                    <button id="exportProductsBtn"><i class="fas fa-download"></i> Export CSV</button>
+                    <button id="batchUpdateBtn"><i class="fas fa-money-bill-wave"></i> Batch Update</button>
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Maintenance">Maintenance</option>
+                        <option value="Installation">Installation</option>
+                    </select>
+                    <input type="text" id="productSearch" placeholder="Search products...">
+                </div>
+                <!-- Table View -->
+                <table id="productTable" class="product-view active">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAllProducts"></th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Duration</th>
+                            <th>Max/Day</th>
+                            <th>Slots</th>
+                            <th>Availability</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productList">
+                        <tr data-id="1" draggable="true">
+                            <td><input type="checkbox" class="product-checkbox" data-id="1"></td>
+                            <td>Deep Cleaning</td>
+                            <td>Cleaning</td>
+                            <td>AED 200 (Flat)</td>
+                            <td>2 hrs</td>
+                            <td>5</td>
+                            <td>Morning, Afternoon</td>
+                            <td><input type="checkbox" checked></td>
+                            <td><img src="https://via.placeholder.com/50" alt="Deep Cleaning"></td>
+                            <td>
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                                <button class="duplicate-btn"><i class="fas fa-copy"></i></button>
+                            </td>
+                        </tr>
+                        <tr data-id="2" draggable="true">
+                            <td><input type="checkbox" class="product-checkbox" data-id="2"></td>
+                            <td>AC Repair</td>
+                            <td>Maintenance</td>
+                            <td>AED 150/hr</td>
+                            <td>1 hr</td>
+                            <td>10</td>
+                            <td>All Day</td>
+                            <td><input type="checkbox"></td>
+                            <td><img src="https://via.placeholder.com/50" alt="AC Repair"></td>
+                            <td>
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                                <button class="duplicate-btn"><i class="fas fa-copy"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Card View -->
+                <div id="productCards" class="product-view">
+                    <div class="product-card" data-id="1" draggable="true">
+                        <img src="https://via.placeholder.com/100" alt="Deep Cleaning">
+                        <h4>Deep Cleaning</h4>
+                        <p>Category: Cleaning</p>
+                        <p>Price: AED 200 (Flat)</p>
+                        <p>Duration: 2 hrs</p>
+                        <p>Max/Day: 5</p>
+                        <p>Slots: Morning, Afternoon</p>
+                        <label>Available: <input type="checkbox" checked></label>
+                        <div class="card-actions">
+                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                            <button class="duplicate-btn"><i class="fas fa-copy"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-id="2" draggable="true">
+                        <img src="https://via.placeholder.com/100" alt="AC Repair">
+                        <h4>AC Repair</h4>
+                        <p>Category: Maintenance</p>
+                        <p>Price: AED 150/hr</p>
+                        <p>Duration: 1 hr</p>
+                        <p>Max/Day: 10</p>
+                        <p>Slots: All Day</p>
+                        <label>Available: <input type="checkbox"></label>
+                        <div class="card-actions">
+                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                            <button class="duplicate-btn"><i class="fas fa-copy"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bulk Actions -->
+                <div class="bulk-actions">
+                    <button id="bulkDelete" disabled>Bulk Delete</button>
+                </div>
+                <!-- Undo Notification -->
+                <div class="undo-notification" id="undoNotification">
+                    <p>Product(s) deleted. <button id="undoDelete">Undo</button></p>
+                </div>
+            </section>
+            <!-- Product Modal -->
+            <div class="modal" id="productModal">
+                <div class="modal-content">
+                    <span class="modal-close">×</span>
+                    <h3 id="modalTitle">Add Product</h3>
+                    <form id="productForm">
+                        <label>Name: <input type="text" id="productName" required></label>
+                        <label>Category:
+                            <select id="productCategory">
+                                <option value="Cleaning">Cleaning</option>
+                                <option value="Maintenance">Maintenance</option>
+                                <option value="Installation">Installation</option>
+                            </select>
+                        </label>
+                        <label>Pricing:
+                            <select id="priceType">
+                                <option value="Flat">Flat Rate</option>
+                                <option value="Hourly">Per Hour</option>
+                            </select>
+                            <input type="number" id="productPrice" min="0" step="1" required placeholder="Price (AED)">
+                        </label>
+                        <label>Dynamic Pricing:
+                            <input type="number" id="dynamicPrice" min="0" step="1" placeholder="Adjusted Price (AED)">
+                            <input type="date" id="dynamicStart">
+                            <input type="date" id="dynamicEnd">
+                        </label>
+                        <label>Duration (hrs): <input type="number" id="productDuration" min="0.5" step="0.5" required></label>
+                        <label>Max/Day: <input type="number" id="productMaxPerDay" min="1" required></label>
+                        <label>Time Slots:
+                            <select id="productSlots" multiple>
+                                <option value="Morning">Morning</option>
+                                <option value="Afternoon">Afternoon</option>
+                                <option value="Evening">Evening</option>
+                                <option value="All Day">All Day</option>
+                            </select>
+                        </label>
+                        <label>Blackout Dates: <input type="date" id="blackoutDates" multiple></label>
+                        <label>Variants: <textarea id="productVariants" placeholder="e.g., Basic, Premium"></textarea></label>
+                        <label>Notes: <textarea id="productNotes" placeholder="Internal notes"></textarea></label>
+                        <label>Image: <input type="file" id="productImage" accept="image/*"></label>
+                        <label>Available: <input type="checkbox" id="productAvailable" checked></label>
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Batch Update Modal -->
+            <div class="modal" id="batchUpdateModal">
+                <div class="modal-content">
+                    <span class="modal-close">×</span>
+                    <h3>Batch Update Pricing</h3>
+                    <form id="batchUpdateForm">
+                        <label>Adjustment Type:
+                            <select id="adjustmentType">
+                                <option value="percentage">Percentage</option>
+                                <option value="fixed">Fixed Amount</option>
+                            </select>
+                        </label>
+                        <label>Amount: <input type="number" id="adjustmentAmount" step="0.01" required></label>
+                        <label>Apply To: <input type="checkbox" id="applyToAll"> All Selected</label>
+                        <button type="submit">Apply</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
