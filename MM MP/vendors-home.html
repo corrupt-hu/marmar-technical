@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - VendorHub</title>
+    <link rel="stylesheet" href="vhstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-store"></i> VendorHub</h3>
+                <button class="sidebar-toggle"><i class="fas fa-bars"></i></button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item active"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+                <a href="products.html" class="nav-item"><i class="fas fa-box"></i> <span>Products</span></a>
+                <a href="orders.html" class="nav-item"><i class="fas fa-shopping-cart"></i> <span>Orders</span></a>
+                <a href="customers.html" class="nav-item"><i class="fas fa-users"></i> <span>Customers</span></a>
+                <a href="analytics.html" class="nav-item"><i class="fas fa-chart-line"></i> <span>Analytics</span></a>
+                <a href="#" class="nav-item logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <p>Mar Mar Technical Services</p>
+                <button id="themeToggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>Welcome Back, John!</h1>
+                    <p class="date">Saturday, March 28, 2025</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-bar">
+                        <input type="text" id="globalSearch" placeholder="Search Dashboard...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="user-profile" id="userProfile">
+                        <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                        <span>John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                        <div class="profile-dropdown">
+                            <a href="./vendor-profile.html  " id="viewProfile">View Profile</a>
+                            <a href="#" id="settings">Settings</a>
+                            <a href="#" id="logoutProfile">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-card">
+                    <h2>Your Business at a Glance</h2>
+                    <div class="hero-metrics">
+                        <div class="metric" id="revenueMetric">
+                            <i class="fas fa-wallet"></i>
+                            <p>Today’s Revenue</p>
+                            <h3>AED <span id="todayRevenue">1,250</span></h3>
+                            <button class="metric-btn" id="refreshRevenue"><i class="fas fa-sync"></i> Refresh</button>
+                        </div>
+                        <div class="metric" id="ordersMetric">
+                            <i class="fas fa-shopping-cart"></i>
+                            <p>Orders Today</p>
+                            <h3><span id="todayOrders">12</span></h3>
+                            <button class="metric-btn" id="viewOrders"><i class="fas fa-eye"></i> View</button>
+                        </div>
+                        <div class="metric" id="ratingMetric">
+                            <i class="fas fa-star"></i>
+                            <p>Avg. Rating</p>
+                            <h3><span id="avgRating">4.8</span></h3>
+                            <button class="metric-btn" id="ratingDetails"><i class="fas fa-info-circle"></i> Details</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Widgets Grid -->
+            <section class="widgets-grid">
+                <!-- Quick Stats -->
+                <div class="widget quick-stats">
+                    <h3>Quick Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item" id="pendingOrdersStat">
+                            <p>Pending Orders</p>
+                            <h4><span id="pendingOrders">5</span></h4>
+                            <button class="stat-btn" id="managePending"><i class="fas fa-tasks"></i></button>
+                        </div>
+                        <div class="stat-item" id="activeCustomersStat">
+                            <p>Active Customers</p>
+                            <h4><span id="activeCustomers">28</span></h4>
+                            <button class="stat-btn" id="viewCustomers"><i class="fas fa-users"></i></button>
+                        </div>
+                        <div class="stat-item" id="servicesOfferedStat">
+                            <p>Services Offered</p>
+                            <h4><span id="servicesOffered">10</span></h4>
+                            <button class="stat-btn" id="manageServices"><i class="fas fa-box"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="widget recent-orders">
+                    <h3>Recent Orders <button id="refreshOrders"><i class="fas fa-sync"></i></button></h3>
+                    <ul class="order-list" id="orderList">
+                        <li data-id="1001">
+                            <span>#1001 - Jane Smith</span>
+                            <span class="status pending">Pending</span>
+                            <button class="order-btn" data-action="view"><i class="fas fa-eye"></i></button>
+                        </li>
+                        <li data-id="1002">
+                            <span>#1002 - Mike Johnson</span>
+                            <span class="status shipped">Shipped</span>
+                            <button class="order-btn" data-action="track"><i class="fas fa-truck"></i></button>
+                        </li>
+                        <li data-id="1003">
+                            <span>#1003 - Sara Ali</span>
+                            <span class="status delivered">Delivered</span>
+                            <button class="order-btn" data-action="details"><i class="fas fa-info-circle"></i></button>
+                        </li>
+                    </ul>
+                    <a href="orders.html" class="view-all">View All Orders</a>
+                </div>
+
+                <!-- Task Scheduler -->
+                <div class="widget task-scheduler">
+                    <h3>Tasks <button id="clearTasks"><i class="fas fa-trash"></i></button></h3>
+                    <ul class="task-list" id="taskList">
+                        <li data-id="1">
+                            <input type="checkbox" id="task1">
+                            <label for="task1">Schedule AC Repair</label>
+                            <span class="due">Due Today</span>
+                            <button class="task-btn" data-action="edit"><i class="fas fa-edit"></i></button>
+                        </li>
+                        <li data-id="2">
+                            <input type="checkbox" id="task2" checked>
+                            <label for="task2">Order Cleaning Supplies</label>
+                            <button class="task-btn" data-action="delete"><i class="fas fa-trash"></i></button>
+                        </li>
+                    </ul>
+                    <form id="taskForm">
+                        <input type="text" id="taskInput" placeholder="Add a task...">
+                        <input type="date" id="taskDue" value="2025-03-28">
+                        <button type="submit"><i class="fas fa-plus"></i></button>
+                    </form>
+                </div>
+
+                <!-- Weather Widget -->
+                <div class="widget weather-widget">
+                    <h3>Dubai Weather <button id="refreshWeather"><i class="fas fa-sync"></i></button></h3>
+                    <div class="weather-info">
+                        <i class="fas fa-sun"></i>
+                        <div>
+                            <h4><span id="weatherTemp">32</span>°C</h4>
+                            <p id="weatherDesc">Sunny - High AC Demand</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="action-btn"><i class="fas fa-plus"></i></button>
+                <ul class="action-menu">
+                    <li><a href="#" id="quickAddProduct">Add Product</a></li>
+                    <li><a href="#" id="quickAddOrder">New Order</a></li>
+                    <li><a href="#" id="quickAddTask">Add Task</a></li>
+                    <li><a href="#" id="quickGenerateReport">Generate Report</a></li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>

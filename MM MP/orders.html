@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - Vendor Dashboard</title>
+    <link rel="stylesheet" href="vhstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-store"></i> VendorHub</h3>
+                <button class="sidebar-toggle"><i class="fas fa-bars"></i></button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="vendors-home.html" class="nav-item"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+                <a href="products.html" class="nav-item"><i class="fas fa-box"></i> <span>Products</span></a>
+                <a href="orders.html" class="nav-item active"><i class="fas fa-shopping-cart"></i> <span>Orders</span></a>
+                <a href="customers.html" class="nav-item"><i class="fas fa-users"></i> <span>Customers</span></a>
+                <a href="analytics.html" class="nav-item"><i class="fas fa-chart-line"></i> <span>Analytics</span></a>
+                <a href="#" class="nav-item logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Orders</h1>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span>John Doe</span>
+                </div>
+            </header>
+            <section class="orders-section">
+                <div class="order-search">
+                    <input type="text" id="orderSearch" placeholder="Search orders...">
+                </div>
+                <div class="order-actions">
+                    <button class="bulk-action" id="bulkShip" disabled>Mark as Shipped</button>
+                    <button class="bulk-action" id="bulkCancel" disabled>Cancel Orders</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="order-row" data-order-id="#1001">
+                            <td><input type="checkbox" class="order-checkbox" data-id="#1001"></td>
+                            <td>#1001</td>
+                            <td>Jane Smith</td>
+                            <td>Mar 26, 2025</td>
+                            <td>$250.00</td>
+                            <td class="status shipped">Shipped</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </section>
+            <div class="modal" id="orderModal">
+                <div class="modal-content">
+                    <span class="modal-close">×</span>
+                    <h3>Order Details</h3>
+                    <div class="order-details">
+                        <p><strong>Order ID:</strong> <span id="modalOrderId"></span></p>
+                        <p><strong>Customer:</strong> <span id="modalCustomer"></span></p>
+                        <p><strong>Date:</strong> <span id="modalDate"></span></p>
+                        <p><strong>Amount:</strong> <span id="modalAmount"></span></p>
+                        <p><strong>Status:</strong> <span id="modalStatus"></span></p>
+                        <p><strong>Items:</strong> <span id="modalItems">Deep Cleaning Service</span></p>
+                        <p><strong>Notes:</strong> <span id="modalNotes">Customer requests evening slot</span></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
